@@ -1,20 +1,15 @@
-import {Item} from "../src/Item";
+import { Item } from '../src/Item';
 
 export class Conjured extends Item {
-    constructor(name: string, sellIn: number, quality: number) {
-        super(name, sellIn, quality)
-    }
+  constructor(name: string, sellIn: number, quality: number) {
+    super(name, sellIn, quality);
+  }
 
-    updateQuality() {
+  updateQuality() {
+    if (this.sellIn == 5) this.quality -= 3;
+    else this.quality -= 1;
 
-        if(this.sellIn == 5)
-            this.quality -= 3
-        else
-            this.quality -= 1
-
-
-        this.sellIn -= 1
-        this.limitQualityByDays()
-
-    }
+    this.sellIn -= 1;
+    this.limitQualityByDays();
+  }
 }

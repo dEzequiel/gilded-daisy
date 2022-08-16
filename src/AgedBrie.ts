@@ -7,9 +7,7 @@ export class AgedBrie extends Item {
 
   updateQuality() {
     if (this.sellIn < 0) this.quality += 2;
-    else {
-      this.quality += 1;
-    }
+    else this.quality += 1;
 
     this.sellIn -= 1;
 

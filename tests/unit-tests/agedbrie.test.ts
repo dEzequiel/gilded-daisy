@@ -26,12 +26,12 @@ describe('aged brie test', () => {
     const item = new AgedBrie('Aged Brie', -1, 0);
     item.updateQuality();
     expect(item.toString()).toBe('Aged Brie, -2, 2');
-  })
+  });
 
   test('quality goes up', () => {
-    const item = new AgedBrie('Aged Brie', 1, 1)
+    const item = new AgedBrie('Aged Brie', 1, 1);
     item.updateQuality();
-    expect(item.quality).toBe(2)
-    expect(item.sellIn).toBe(0)
-  })
-})
+    expect(item.quality).toBe(2);
+    expect(item.sellIn).toBe(0);
+  });
+});

@@ -1,12 +1,12 @@
-import {Item} from "../src/Item";
+import { Item } from '../src/Item';
 
 export class Sulfuras extends Item {
-    constructor(name: string, sellIn: number) {
-        super(name, sellIn, 80);
-    }
+  constructor(name: string, sellIn: number) {
+    super(name, sellIn, 80);
+  }
 
-    updateQuality() {
-        this.sellIn = this.sellIn
-        this.quality = this.quality
-    }
+  updateQuality() {
+    this.sellIn = this.sellIn;
+    this.quality = this.quality;
+  }
 }
