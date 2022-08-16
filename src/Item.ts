@@ -34,13 +34,27 @@ export class Item {
   }
 
   public updateQuality(): void {
-    this._sellIn -= 1;
-    this.quality -= 1;
+    if(this._sellIn < 0) {
+        this._quality -= 2
+    }
+
+    this._sellIn -= 1
+    this._quality -= 1
+      this.limitQuality()
   }
 
   public limitQuality(): void {
-    if (this._quality > 50) {
+    if (this._quality > 50)
       this._quality = 50;
-    }
+
+  }
+
+  public limitQualityByDays(): void {
+    if(this._sellIn <= 0)
+      this._quality = 0
+  }
+
+  public toString(): string {
+      return `${this._name}, ${this._sellIn}, ${this._quality}`
   }
 }
