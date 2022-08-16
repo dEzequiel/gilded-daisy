@@ -1,4 +1,4 @@
-import { AgedBrie } from '../../src/AgedBrie';
+import { AgedBrie } from '../../src/domain/AgedBrie';
 
 describe('aged brie test', () => {
   test('one day passed', () => {

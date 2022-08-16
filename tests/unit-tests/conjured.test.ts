@@ -1,4 +1,4 @@
-import { Conjured } from '../../src/Conjured';
+import { Conjured } from '../../src/domain/Conjured';
 
 describe('conjured item test', () => {
   test('should update quality for conjured sellin 1 day', () => {

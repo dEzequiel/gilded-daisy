@@ -1,4 +1,4 @@
-import { BackstagePass } from '../../src/BackstagePass';
+import { BackstagePass } from '../../src/domain/BackstagePass';
 
 describe('backstage pass test', () => {
   test('should increase quality of backstage passes by 1 when more than 10 days remaining', () => {
