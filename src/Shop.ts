@@ -1,16 +1,19 @@
 import {Item} from "@/domain/Item";
 
 export class GildedRose {
-    private inventory: Array<Item> = []
+    private _inventory: Array<Item> = []
 
     constructor(items: Array<Item>) {
-        this.inventory = items
+        this._inventory = items
     }
 
-    public updateInventory(days: number): void {
-        for(let i = 0; i < days; i++) {
-            this.inventory[i].updateQuality()
-            this.inventory[i].toString()
-        }
+    get inventory() {
+        return this._inventory
+    }
+
+    public updateInventory(): void {
+        this._inventory.forEach(function(item) {
+            item.updateQuality()
+        })
     }
 }
