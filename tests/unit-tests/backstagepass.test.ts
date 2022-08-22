@@ -1,8 +1,8 @@
-import {Factory} from "../../src/Factory";
-import {GildedDaisy} from "../../src/domain/GildedDaisy";
+import { Factory } from '../../src/Factory';
+import { GildedDaisy } from '../../src/domain/GildedDaisy';
 
 describe('backstage pass test', () => {
-  const shop: Factory = new GildedDaisy()
+  const shop: Factory = new GildedDaisy();
   test('should increase quality of backstage passes by 1 when more than 10 days remaining', () => {
     const item = shop.createBackstagePassItem('Backstage pass', 11, 1);
     item.updateQuality();
@@ -18,7 +18,7 @@ describe('backstage pass test', () => {
   });
 
   test('should set quality of backstage passes to 0 after concert', () => {
-    const item = shop.createBackstagePassItem('Backstage pass', 0, 10)
+    const item = shop.createBackstagePassItem('Backstage pass', 0, 10);
     item.updateQuality();
 
     expect(item.getQuality()).toBe(0);

@@ -12,13 +12,13 @@ export class BackstagePass implements Item {
   }
 
   getName(): string {
-    return this.name
+    return this.name;
   }
   getSellIn(): number {
-    return this.sellIn
+    return this.sellIn;
   }
   getQuality(): number {
-    return this.quality
+    return this.quality;
   }
 
   updateQuality() {
@@ -34,6 +34,5 @@ export class BackstagePass implements Item {
     this.sellIn -= 1;
 
     if (this.quality > 50) this.quality = 50;
-
   }
 }
