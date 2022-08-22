@@ -1,28 +1,30 @@
-import {Item} from "../../src/domain/Item";
-import {AgedBrie} from "../../src/domain/AgedBrie";
-import {BackstagePass} from "../../src/domain/BackstagePass";
-import {Conjured} from "../../src/domain/Conjured";
-import {Sulfuras} from "../../src/domain/Sulfuras";
-import {GildedRose} from "../../src/Shop";
+import { Item } from '../../src/interfaces/Item'
+import {Factory} from "../../src/Factory";
+import {GildedDaisy} from "../../src/domain/GildedDaisy";
 
 describe('shop inventory is updated', () => {
+
     test('should update all items', () => {
+        const shop = new GildedDaisy()
+
         const items: Array<Item> = [
-            new AgedBrie('Aged Brie',1, 2),
-            new BackstagePass('Backstage pass', 3, 1),
-            new Conjured('Conjured', 1, 2),
-            new Sulfuras('Sulfuras', 2)
+            shop.createAgedBrieItem('Aged Brie',1, 2),
+            shop.createBackstagePassItem('Backstage pass', 3, 1),
+            shop.createConjuredItem('Conjured', 1, 2),
+            shop.createSulfurasItem('Sulfuras', 2)
         ]
 
-        const shop = new GildedRose(items)
-        shop.updateInventory()
-        expect(shop.inventory[0].quality).toBe(3)
-        expect(shop.inventory[0].sellIn).toBe(0)
-        expect(shop.inventory[1].quality).toBe(4)
-        expect(shop.inventory[1].sellIn).toBe(2)
-        expect(shop.inventory[2].quality).toBe(0)
-        expect(shop.inventory[2].sellIn).toBe(0)
-        expect(shop.inventory[3].quality).toBe(80)
-        expect(shop.inventory[3].sellIn).toBe(2)
+
+        shop.setInventory(items)
+        shop.updateQuality()
+        expect(shop.getInventory()[0].getQuality()).toBe(3)
+        expect(shop.getInventory()[0].getSellIn()).toBe(0)
+        expect(shop.getInventory()[1].getQuality()).toBe(4)
+        expect(shop.getInventory()[1].getSellIn()).toBe(2)
+        expect(shop.getInventory()[2].getQuality()).toBe(0)
+        expect(shop.getInventory()[2].getSellIn()).toBe(0)
+        expect(shop.getInventory()[3].getQuality()).toBe(80)
+        expect(shop.getInventory()[3].getSellIn()).toBe(2)
+
     })
 })
