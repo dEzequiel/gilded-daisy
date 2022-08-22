@@ -1,8 +1,24 @@
-import { Item } from './Item';
+import { Item } from '../interfaces/Item'
 
-export class AgedBrie extends Item {
-  constructor(name: string, sellIn: number, quality: number) {
-    super(name, sellIn, quality);
+export class AgedBrie implements Item {
+  private name: string;
+  private sellIn: number;
+  private quality: number;
+
+  constructor(_name: string, _sellIn: number, _quality: number) {
+    this.name = _name;
+    this.sellIn = _sellIn;
+    this.quality = _quality;
+  }
+
+  getName(): string {
+    return this.name
+  }
+  getSellIn(): number {
+    return this.sellIn
+  }
+  getQuality(): number {
+    return this.quality
   }
 
   updateQuality() {
@@ -11,6 +27,7 @@ export class AgedBrie extends Item {
 
     this.sellIn -= 1;
 
-    this.limitQuality();
+    if(this.quality > 50) this.quality = 50;
+
   }
 }

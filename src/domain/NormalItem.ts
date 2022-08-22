@@ -1,6 +1,4 @@
-import { Item } from '../interfaces/Item';
-
-export class Conjured implements Item {
+export class NormalItem {
   private name: string;
   private sellIn: number;
   private quality: number;
@@ -21,12 +19,18 @@ export class Conjured implements Item {
     return this.quality
   }
 
-  updateQuality() {
-    if (this.sellIn == 5) this.quality -= 3;
-    else this.quality -= 1;
+  public updateQuality(): void {
+    if (this.sellIn < 0) {
+      this.quality -= 2;
+    }
 
     this.sellIn -= 1;
+    this.quality -= 1;
+    if (this.quality > 50) this.quality = 50;
+  }
 
-    if (this.sellIn <= 0) this.quality = 0;
+
+  public toString(): string {
+    return `${this.name}, ${this.sellIn}, ${this.quality}`;
   }
 }
