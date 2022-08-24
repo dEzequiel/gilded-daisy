@@ -1,8 +1,24 @@
-import { Item } from './Item';
+import { Item } from '../interfaces/Item';
 
-export class Conjured extends Item {
-  constructor(name: string, sellIn: number, quality: number) {
-    super(name, sellIn, quality);
+export class Conjured implements Item {
+  private name: string;
+  private sellIn: number;
+  private quality: number;
+
+  constructor(_name: string, _sellIn: number, _quality: number) {
+    this.name = _name;
+    this.sellIn = _sellIn;
+    this.quality = _quality;
+  }
+
+  getName(): string {
+    return this.name;
+  }
+  getSellIn(): number {
+    return this.sellIn;
+  }
+  getQuality(): number {
+    return this.quality;
   }
 
   updateQuality() {
@@ -10,6 +26,7 @@ export class Conjured extends Item {
     else this.quality -= 1;
 
     this.sellIn -= 1;
-    this.limitQualityByDays();
+
+    if (this.sellIn <= 0) this.quality = 0;
   }
 }
