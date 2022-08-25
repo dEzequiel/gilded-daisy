@@ -1,27 +1,35 @@
-import { PrismaClient } from '@prisma/client';
+import prisma from "./client";
+import {Item} from "../types/Item";
 
-const prisma = new PrismaClient();
+type Inventory = {}
 
-async function main() {
-  const item = await prisma.inventory.create({
-    data: {
-      name: 'Aged Brie',
-      sell_in: 2,
-      quality: 0
-    }
-  });
-  console.log(item);
+export async function addItem(item: Item): Promise<Inventory> {
+    return await prisma.inventory.create({
+        data: {
+            name: item.name,
+            sell_in: item.sell_in,
+            quality: item.quality
+        }
+    })
 }
 
-main()
-  .then(async () => {
-    await prisma.$disconnect();
-  })
 
-  .catch(async (e) => {
-    console.error(e);
+export async function deleteItem(id: number): Promise<Inventory> {
+    return await prisma.inventory.delete({
+        where: {
+            id: id
+        }
+    })
+}
 
-    await prisma.$disconnect();
+export async function getAll(): Promise<Inventory> {
+    return await prisma.inventory.findMany()
+}
 
-    process.exit(1);
-  });
+export async function getOneItem(id: number): Promise<Inventory | null> {
+    return await prisma.inventory.findUnique({
+        where: {
+            id: id
+        }
+    })
+}
