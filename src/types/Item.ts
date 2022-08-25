@@ -1,5 +1,6 @@
 export type Item = {
+  item?: number
   name: string;
-  sellIn: number;
+  sell_in: number;
   quality: number;
 };
